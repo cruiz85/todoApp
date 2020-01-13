@@ -1,0 +1,37 @@
+<ion-header class="ion-text-center" no-border>
+    <ion-toolbar color="dark">
+        <ion-title>
+            Pendientes
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+    <!-- List of Text Items -->
+    <ion-list>
+        <ion-item-sliding *ngFor="let tarea of listaDeTareas; let i = index" class="animated fadeInDown">
+
+            <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="removeItem(i)">
+                    <ion-icon slot="icon-only" name="close"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+            <ion-item-options side="start">
+                <ion-item-option color="secundary" (click)="editItem(tarea)">
+                    <ion-icon slot="icon-only" name="create"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+
+            <ion-item detail color="dark">
+                <ion-note slot="end">{{tarea.items.length}} items</ion-note>
+                <ion-label (click)="seeDetail(tarea.id)">{{tarea.titulo}}</ion-label>
+            </ion-item>
+
+        </ion-item-sliding>
+    </ion-list>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="agregarLista()" color="tertiary">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

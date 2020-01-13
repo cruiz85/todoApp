@@ -1,0 +1,22 @@
+<ion-header class="ion-text-center" no-border>
+    <ion-toolbar>
+        <ion-title>Testing module</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-button expand="block">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-input readonly [(ngModel)]="myDate"
+                   [liIonic4Datepicker]="datePickerObj"
+                   (ionChange)="getDate($event)">
+
+        </ion-input>
+    </ion-button>
+
+    <ion-button (click)="bookAppointmet(freeSlot)"
+                *ngFor="let freeSlot of freeSlots">{{freeSlot.start | date: 'shortTime'}}</ion-button>
+
+</ion-content>
